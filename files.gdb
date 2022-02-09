@@ -26,3 +26,7 @@ end
 define file_rq_bio_iov_base_unsafe
     p (char *)(((struct iomap_dio *)($arg0->bio->bi_private))->submit.iter.iov - $arg1).iov_base
 end
+
+define file_dd_be_prio_read
+    p ((struct deadline_data *) $arg0->queue->elevator->elevator_data)->per_prio[DD_BE_PRIO]->sort_list[0]
+end
